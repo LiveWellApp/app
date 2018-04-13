@@ -1,53 +1,63 @@
 //these are empty at the beginning
 var boxArray = [];
 var foodArray = [];
+var searchArray = [];
 
 $(document).ready(function() {
         
     //get food objects
-    $.getJSON("http://localhost:8888/livewell/food.json", function(json) {
+    $.getJSON("food.json", function(json) {
         foodArray = json;
         loop(foodArray);
     });
     
     //depending on dropdown choice, change sorting rules
-    document.getElementsByTagName("select")[0].onchange  = function () {
+    document.getElementsByTagName("select")[0].onchange = function () {
     var index = this.selectedIndex;
-    
-    //sort ascending
-    if (index == 0) {
-        foodArray.sort(function(a, b){
-            var keyA = a.calories,
-                keyB = b.calories;
-            if(keyA < keyB) return -1;
-            if(keyA > keyB) return 1;
-            return 0;
-        });
+
+    if (index == 1) {
+        foodArray.sort(ascending);
         loop(foodArray);
        
-    //sort descending
-    } else if (index == 1) {
-        foodArray.sort(function(a, b){
-            var keyA = a.calories,
-                keyB = b.calories;
-            if(keyA > keyB) return -1;
-            if(keyA < keyB) return 1;
-            return 0;
-        });
-        loop(foodArray);
-        
-    //sort by breakfast, lunch, or dinner
     } else if (index == 2) {
-        foodArray.sort(function(a, b){
-            var textA = a.type,
-                textB = b.type;
-            return textA.localeCompare(textB);
-        });
+        foodArray.sort(descending);
         loop(foodArray);
         
+    } else if (index == 3) {
+        foodArray.sort(compare);
+        loop(foodArray);
     }
 }
 }); 
+
+//sort ascending
+function descending(a, b){
+    if(a.calories > b.calories) return -1;
+    if(a.calories< b.calories) return 1;
+    return 0;
+}
+
+//sort descending
+function ascending(a,b) {
+    if(a.calories < b.calories) return -1;
+    if(a.calories > b.calories) return 1;
+    return 0;
+}
+
+//sort by breakfast, lunch, or dinner
+function compare(a,b) {
+    if(a.type < b.type) return -1;
+    if(a.type > b.type) return 1;
+    return 0;
+}
+
+//search for the food and display it
+document.getElementById("search").addEventListener("keyup", function(ev) {
+   if (ev.keyCode = 13) {
+       var result = search(this.value.toUpperCase());
+       loop(searchArray);
+   }
+});
 
 
 function createNew (foodItem) {
@@ -55,6 +65,7 @@ function createNew (foodItem) {
     var newBox = document.createElement('div');
     newBox.className = 'foodDiv';
     newBox.style.backgroundImage = 'url('+foodItem.image+')';
+    newBox.style.backgroundSize = "cover";
     
     //each new div will move to the next page if clicked on
     newBox.addEventListener("click", function() {
@@ -79,14 +90,23 @@ function showFoods () {
     } 
 }
 
-
 function loop (array) {
     //clear boxArray and recreate the divs after sorting
     boxArray = [];
     for (x=0; x < array.length; x++){
-        createNew(foodArray[x]);
+        createNew(array[x]);
     }
     
     //ok now you can show them
     showFoods();
+}
+
+//search foodArray using the input
+function search (keyword) {
+    searchArray = [];
+    for (i=0;i<foodArray.length;i++) {
+        if (foodArray[i].name.match(keyword)) {
+             searchArray.push(foodArray[i]);
+        }
+    }
 }

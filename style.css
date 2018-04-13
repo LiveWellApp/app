@@ -15,6 +15,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    z-index: 2;
 }
 .menuButton {
     height: 90px;
@@ -24,7 +25,7 @@ body {
 #menuDropdown {
     display: none;
     position: absolute;
-    top: 50px;
+    top: 100px;
     right: 0;
     width: 100%;
     background-color: #fff;
@@ -89,16 +90,21 @@ h1 {
     font-size: 2.5em;
     font-weight: normal;
     text-align: center;
+    margin-bottom: 0px;
 }
 .banner {
     width: 100%;
     height: auto;
+    overflow: hidden;
 }
 /*================== HOME ==================*/
 .logo {
     padding: 5% 10%;
     margin-bottom: 15%;
     width: 50%;
+}
+#about {
+    display: none;
 }
 /*================== RECIPES ==================*/
 #foodList {
@@ -133,7 +139,10 @@ h1 {
     text-align: center;
     padding-bottom: 2.5em;
 }
-
+#recipeBox {
+    width: 80%;
+    margin: 50px 0px;
+}
 /*================== QUIZ ==================*/
 #regForm {
     width: 100%;
@@ -159,6 +168,7 @@ input.invalid {
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 50px;
 }
 
 #stepBox {
@@ -168,36 +178,87 @@ input.invalid {
     height: 50px;
 }
 .step {
-  height: 50px;
-  width: 50px;
-  margin: 20px 10px;
-  background-color: #fff;
-  border: 1px solid #8eca3a;  
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
+    height: 50px;
+    width: 50px;
+    margin: 20px 10px;
+    background-color: #fff;
+    border: 1px solid #8eca3a;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
 }
 .step.active {
-  opacity: 1;
-  border: 1px solid #fff;
+    opacity: 1;
+    border: 1px solid #fff;
 }
 .step.finish {
-  background-color: #fff;
+    background-color: #fff;
 }
 
-.radio_item{
-display: none !important;
+label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+    width: 200px;
+    height: 200px;
+    opacity: 0.5;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    opacity: 1;
 }
 
-.label_item {
-opacity: 0.1;
+#fact1, fact2 {
+    padding: 0px 10%;
 }
-
-.radio_item:checked + label {
-opacity: 1;
+.choices {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
 }
 
 /*================== RESULT ==================*/
 #suggestions {
     border: 1px solid #8eca3a;
 }
+
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .navBar {
+        height: 50px;
+    }
+    .menuButton {
+        display: none;
+    }
+    #menuDropdown {
+        display: none;
+    }
+    .content {
+        width: 40%;
+    }
+    .input {
+        height: 50px;
+        font-size: 1.5em;
+        margin-bottom: 10%;
+    }
+    .button {
+        font-size: 1.5em;
+        border-radius: 50px;
+        height: 50px;
+    }
+    body {
+        font-size: 1em;
+    }
+    #about {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 50%;
+        top: 60px;
+        padding-right: 3%;
+    }
+}
+
