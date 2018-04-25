@@ -2,23 +2,23 @@
 <html>
     <head>
         <title>Live Well v1.0</title>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" type="text/css"/>
     </head>
     <body>
         <div id="wrap">
             <div class="navBar">
                 <button id="menu" class="menuButton"><img src="imgs/menu.svg"/></button>
-                <div id="menuDropdown">
+                <div id="menuDropdown" style="display: none;">
                     <table>
                         <tr>
-                            <td><a href="index.html">Home</a></td>
+                            <td id="mhome"><a href="index.html">Home</a></td>
                         </tr>
                         <tr>
-                            <td><a href="recipes.html">Recipes</a></td>
+                            <td id="mrecipe"><a href="recipes.html">Recipes</a></td>
                         </tr>
                         <tr>
-                            <td><a href="about.html">About</a></td>
+                            <td id="mabout"><a href="about.html">About</a></td>
                         </tr>
                     </table>
                 </div>
@@ -26,14 +26,11 @@
             
             <div class="content">
                 <img src="imgs/logo.svg" alt="logo" class="logo"/>
-                <input type="text" placeholder="name" id="name" class="input"/>
-                <button id="start" class="button">start</button>
-                <button id="feedback" class="button">feedback</button>
-            </div>
-            
-            <div id="about">
-                <p>About this app fdas fdsajkle  fdhsjf hejf hjda rhjekw dsajkf fbensa fjasdje dfsakjf ehjw dnrbe w ehg ha hsdjkfl ehwjkdsa hjkgsal ehjrk fhjdksa hjkas dhjk dsfhjkas hjkdsal.</p>
-                <p>Team: Marco, Carmen, Irene</p>
+                <div class="controls">
+                    <input type="text" placeholder="First Name" id="name" class="input"/>
+                    <button id="start" class="button">start</button>
+                </div>
+                
             </div>
             
         </div>

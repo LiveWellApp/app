@@ -4,28 +4,28 @@
 body {
     margin: 0 auto;
     font-family: 'Merriweather', serif;
-    font-size: 2em;
+    font-size: 1em;
 }
 #wrap {
     width: 100%;
 }
 .navBar {
     background-color: #8eca3a;
-    height: 100px; 
+    height: 50px; 
     width: 100%;
     display: flex;
     justify-content: flex-end;
     z-index: 2;
 }
 .menuButton {
-    height: 90px;
-    width: 90px;
+    height: 50px;
+    width: 50px;
     background: none;
 }
 #menuDropdown {
     display: none;
     position: absolute;
-    top: 100px;
+    top: 50px;
     right: 0;
     width: 100%;
     background-color: #fff;
@@ -63,7 +63,7 @@ a:visited {
     border: 1px #8eca3a solid;
     border-radius: 12px;
     width: 80%;
-    height: 100px;
+    height: 50px;
     font-family: 'Poppins', sans-serif;
     font-size: 1.5em;
     text-align: center;
@@ -79,7 +79,7 @@ a:visited {
     text-transform: uppercase;
     padding: 1% 4%;
     width: auto;
-    height: 100px;
+    height: 50px;
     margin-bottom: 5%;
 }
 .button:hover, .button:active {
@@ -95,29 +95,42 @@ h1 {
 .banner {
     width: 100%;
     height: auto;
-    overflow: hidden;
+    z-index: -1;
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#ingredientBox, #suggestions {
+    border: 1px solid #8eca3a;
+    border-radius: 12px;
+    width: 80%;
+    text-align: center;
+    padding-bottom: 2.5em;
 }
 /*================== HOME ==================*/
 .logo {
     padding: 5% 10%;
-    margin-bottom: 15%;
+		margin-top: 5%;
+    margin-bottom: 5%;
     width: 50%;
 }
-#about {
-    display: none;
-}
+
 /*================== RECIPES ==================*/
 #foodList {
     width: 80%;
-    height: 800px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 50px;
 }
 .foodDiv {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     margin: 1%;
     border: 1px solid #8eca3a;
     border-radius: 12px;
@@ -132,21 +145,13 @@ h1 {
     text-align: center;
 }
 /*================== RECIPE VIEW ==================*/
-#ingredientBox {
-    border: 1px solid #8eca3a;
-    border-radius: 12px;
-    width: 80%;
-    text-align: center;
-    padding-bottom: 2.5em;
-}
-#recipeBox {
+#recipeBox, #aboutBox {
     width: 80%;
     margin: 50px 0px;
 }
 /*================== QUIZ ==================*/
 #regForm {
     width: 100%;
-    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -165,6 +170,7 @@ input.invalid {
 
 #buttonBox {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -178,9 +184,9 @@ input.invalid {
     height: 50px;
 }
 .step {
-    height: 50px;
-    width: 50px;
-    margin: 20px 10px;
+    height: 25px;
+    width: 25px;
+    margin: 10px 5px;
     background-color: #fff;
     border: 1px solid #8eca3a;  
     border-radius: 50%;
@@ -200,16 +206,17 @@ label > input{ /* HIDE RADIO */
     position: absolute; /* Remove input from document flow */
 }
 label > input + img{ /* IMAGE STYLES */
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     opacity: 0.5;
 }
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     opacity: 1;
 }
 
-#fact1, fact2 {
+#fact1, #fact2 {
     padding: 0px 10%;
+    text-align: center;
 }
 .choices {
     width: 100%;
@@ -220,45 +227,88 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     margin: 50px;
 }
 
+#fact1Img, #fact2Img {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pot {
+    position: absolute;
+    width: 300px;
+    bottom: 0px;
+}
+#potlid {
+    position: absolute;
+    bottom: 0px;
+    width: 220px;
+    animation: updown 1s alternate infinite;
+}
+#bowl {
+    position: absolute;
+    bottom: 0px;
+    width: 220px;
+}
+#spoon {
+    position: absolute;
+    height: 220px;
+    transform: rotate(-45deg);
+    z-index: -1;
+    animation: lift 1s alternate infinite;
+}
+#iradio1:hover, #iradio2:hover, #iradio3:hover, #iradio1:active, #iradio2:active, #iradio3:active {
+    animation: shake 1s alternate infinite;
+}
+.item {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    height: auto;
+    z-index: -1;
+}
+
+@keyframes updown {
+    0% {bottom: 140px;}
+    100% {bottom: 200px;}
+}
+@keyframes shake {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(15deg);}
+}
+@keyframes jiggle {
+    0% {top: 160px;}
+    100% {top: 190px;}
+}
+@keyframes lift {
+    0% {transform: rotate(-45deg);}
+    100% {transform: rotate(25deg);}
+}
 /*================== RESULT ==================*/
-#suggestions {
-    border: 1px solid #8eca3a;
+#playAgain {
+    margin-top: 50px;
+}
+#resultPic {
+    width: 100%;
 }
 
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-    .navBar {
-        height: 50px;
-    }
-    .menuButton {
-        display: none;
-    }
-    #menuDropdown {
-        display: none;
-    }
+/*================== MEDIA QUERIES ==================*/
+@media (min-width: 770px) {
     .content {
-        width: 40%;
+        width: 100%;
+        flex-direction: row;
     }
-    .input {
-        height: 50px;
-        font-size: 1.5em;
-        margin-bottom: 10%;
+    .logo {
+        height: 70vh;
+        width: auto;
+        margin-bottom: none;
     }
-    .button {
-        font-size: 1.5em;
-        border-radius: 50px;
-        height: 50px;
+    #regForm {
+        width: 50%;
+        height: auto;
     }
-    body {
-        font-size: 1em;
-    }
-    #about {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        left: 50%;
-        top: 60px;
-        padding-right: 3%;
-    }
+
 }
+
 

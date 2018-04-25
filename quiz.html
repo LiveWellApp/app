@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Live Well v1.0 - Quiz</title>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     </head>
@@ -23,27 +23,33 @@
                   <!-- One "tab" for each step in the form: -->
                   <div class="tab">
                     <img class="banner" id="foodBanner" src="#"/>  
-                    <p id="q1">How many calories does your selection have?</p>
-                    <input type="number" id="calories" min="0" max="9999" class="input" placeholder="per serving"/>
+                    <h1 id="q1">How many calories (per serving) is in this recipe?</h1><br/>
+                    <input type="number" id="calories" min="0" max="9999" class="input" placeholder="No. of Calories"/>
                   </div>
                     
                   <div class="tab">
+                      <div id="fact1Img">
+                        <img src="imgs/icon_imgs/pot_lid.svg" id="potlid"/>
+                        <img src="imgs/icon_imgs/pot.svg" id="pot"/>
+                      </div>
                       <h1>Did you know?</h1>
                       <p id="fact1"></p>
                   </div>
                     
                   <div class="tab">
                     <img class="banner" id="foodBanner2" src="#"/>  
-                    <p id="q2">What is a ingredient used in the recipe you chose?</p>
+                    <h1 id="q2">What is the main ingredient used in this recipe?</h1><br/>
                         <div class="choices">
                             <label> 
                             <input type="radio" value ="" name="item" id="radio1">
                             <img src="#" id="iradio1"/> 
                             </label>
+													&nbsp;&nbsp;&nbsp;
                             <label>
                             <input type="radio" value="" name="item" id="radio2">
                             <img src="#" id="iradio2"/> 
                             </label>
+													&nbsp;&nbsp;&nbsp;
                             <label>
                             <input type="radio" value="" name="item" id="radio3">
                             <img src="#" id="iradio3"/> 
@@ -52,18 +58,22 @@
                   </div>
                     
                   <div class="tab">
+                      <div id="fact2Img">
+                        <img src="imgs/icon_imgs/spoon.svg" id="spoon"/>
+                        <img src="imgs/icon_imgs/bowl.svg" id="bowl"/>
+                      </div>
                       <h1>Almost there!</h1>
                       <p id="fact2"></p>
                   </div>
                   <div class="tab">
                     <img class="banner" id="foodBanner3" src="#"/> 
-                    <p id="q3">Where does this recipe come from?</p>
+                    <h1 id="q3">Which country does this recipe from?</h1><br/>
                     <input type="text" id="country" class="input" placeholder="Your answer"/>
                   </div>
                     
                     <div id="buttonBox">
-                      <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="button">Previous</button>
                       <button type="button" id="nextBtn" onclick="nextPrev(1)" class="button">Next</button>
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="button">Previous</button>
                     </div>
                 </form> 
             </div>

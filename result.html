@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Live Well v1.0 - Result</title>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     </head>
@@ -10,32 +10,36 @@
         <div id="wrap">
             <div class="navBar">
                 <button id="menu" class="menuButton"><img src="imgs/menu.svg"/></button>
-                <div id="menuDropdown">
+                <div id="menuDropdown" style="display: none;">
                     <table>
                         <tr>
-                            <td><a href="index.html">Home</a></td>
+                            <td id="mhome"><a href="index.html">Home</a></td>
                         </tr>
                         <tr>
-                            <td><a href="recipes.html">Recipes</a></td>
+                            <td id="mrecipe"><a href="recipes.html">Recipes</a></td>
                         </tr>
                         <tr>
-                            <td><a href="about.html">About</a></td>
+                            <td id="mabout"><a href="about.html">About</a></td>
                         </tr>
                     </table>
                 </div>
             </div>
             
             <div class="content">
-                <img src="#" id="resultPic"/>
+                <div class="controls">
+                    <img src="#" id="resultPic"/>
                 <h1 id="score">Your Score:</h1>
                 <p id="feedback"></p>
-                
-                <div id="suggestions">
-                <h1>Ingredient Suggestions</h1>
                 </div>
                 
-                <button class="button" id="playAgain">Choose Another Recipe</button>
+                <div class="controls">
+                    <div id="suggestions">
+                        <h1>Ingredients Alternatives:</h1><br/>
+                    </div>
+                    <button class="button" id="playAgain">Choose Another Recipe</button>
             </div>
+                </div>
+                
             
         </div>
         <script src="menu.js"></script>
